@@ -61,7 +61,7 @@ async function run() {
         // BIKES API HANDLING //
 
 
-        // GETTING bikeS DATA
+        // GETTING BIKES DATA
         app.get('/bikes', async (req, res) => {
             const cursor = bikesCollection.find({});
             const bikes = await cursor.toArray();
@@ -74,13 +74,13 @@ async function run() {
             const bikes = await bikesCollection.findOne(query);
             res.send(bikes);
         })
-        // POST bike DATA
+        // POST BIKE DATA
         app.post('/bikes', async (req, res) => {
             const bike = req.body;
             const result = await bikesCollection.insertOne(bike);
             res.json(result);
         })
-        // DELETING bike DATA
+        // DELETING BIKE DATA
         app.delete('/bikes/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
